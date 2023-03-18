@@ -12,7 +12,7 @@ Risposte:
 1) DHCP (da relazione): è un servizio che si utilizza per assegnare indirizzi IP a dei dispositivi in modo automatico. E’ possibile impostare su di esso il range di indirizzi IP che possono essere forniti, specificando un valore minimo e uno massimo.
 Si può impostare inoltre l’indirizzo IP del gateway (che nel caso della prova coincideva con il router) ed il DNS Server della rete. Su filius dopo aver configurato il DHCP Server è necessario abilitare il servizio su ogni dispositivo che ne necessita.
 
-2)I pc delle due reti non comunicavano tramite ping per i seguenti motivi:
+2) I pc delle due reti non comunicavano tramite ping per i seguenti motivi:
   - il DHCP server della prima rete non era impostato in modo da definire il gateway dei dispositivi collegati ad esso: di conseguenza questi ultimi non disponevano di una via di uscita dalla rete.
   - sul pc della seconda rete non era impostata l'opzione che specifica l'utilizzo del DHCP come metodo di configurazione, il pc disponeva perciò di una configurazione statica ed errata.
 
