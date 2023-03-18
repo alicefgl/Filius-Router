@@ -17,7 +17,7 @@ Si può impostare inoltre l’indirizzo IP del gateway (che nel caso della prova
   - sul pc della seconda rete non era impostata l'opzione che specifica l'utilizzo del DHCP come metodo di configurazione, il pc disponeva perciò di una configurazione statica ed errata.
 
 3) Il comando PING utilizza il protocollo ARP:
-   - PING (da relazione): è un comando eseguibile dal prompt dei comandi, viene utilizzato per effettuare controllo sulla diagnostica di una rete in quanto è possibile contattare un dispositivo tramite il proprio indirizzo ip ed ottenere una risposta (pong) che comunica se il dispositivo è presente sulla rete (fornendo il tempo impiegato a rispondere) o meno.
+  - PING (da relazione): è un comando eseguibile dal prompt dei comandi, viene utilizzato per effettuare controllo sulla diagnostica di una rete in quanto è possibile contattare un dispositivo tramite il proprio indirizzo ip ed ottenere una risposta (pong) che comunica se il dispositivo è presente sulla rete (fornendo il tempo impiegato a rispondere) o meno.
 Se il dispositivo non è presente sulla rete o il ping non è in grado di arrivare ad esso (ad esempio potrebbe essersi compromesso un collegamento), il risultato del ping sarà un Timeout, il quale indica che non è stata ricevuta alcuna risposta.
 Nel caso in cui il dispositivo sia presente e fornisca una risposta, è possibile visualizzare a schermo la latenza del ping stesso, cioè il tempo durante il quale il pacchetto naviga sulla rete prima che ritorni una risposta accettabile. La latenza viene misurata in millisecondi.
 Questo comando utilizza il protocollo ARP come spiegato successivamente.
