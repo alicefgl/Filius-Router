@@ -91,5 +91,72 @@ Selezionando il Computer scelto come Server DHCP è possibile configurare
 quest’ultimo tramite il tasto sotto riportato, che compare all’interno della
 finestra in basso alla schermata.
 
-METTERE IMMAGINE!!
+<img src="images\tastoDHCP.png" width="350" title="tastoDHCP">
 
+<img src="images\impostazioneDHCP.png" width="350" title="impostazioneDHCP">
+
+Per quanto riguarda gli altri dispositivi, essi andranno collegati al server DHCP tramite uno switch ed in seguito andrà spuntata l’opzione che permette l’uso di tale servizio dal dispositivo.
+
+<img src="images\attivazioneDHCP.png" width="350" title="attivazioneDHCP">
+
+2) *Simulazione*
+Sistema risultante:
+
+<img src="images\rete.png" width="350" title="rete">
+
+Dopo aver impostato correttamente gli indirizzi IP relativi ai vari dispositivi (ad
+esempio come in figura), è possibile avviare la simulazione.
+Se i collegamenti sono stati effettuati in modo corretto e sono stati impostati indirizzi
+IP validi, a simulazione appena avviata si possono vedere i cavi colorarsi di verde (a
+causa dei vari messaggi di controllo inviati prima della comunicazione effettiva, ad
+esempio lo switch popolerà la MAC table sfruttando il protocollo ARP, come spiegato
+successivamente).
+
+3) Prompt dei comandi:
+
+Per installare il prompt dei comandi da un qualsiasi Computer o Notebook sulla rete, aprire Software Installation e spostare “Command Line” tra le applicazioni installate (“Installed”), per poi applicare i cambiamenti tramite il tasto in basso al centro (“Apply changes”).
+
+<img src="images\prompt.png" width="350" title="prompt">
+
+4) *Ping a un dispositivo della rete opposta:*
+
+<img src="images\ping.png" width="350" title="ping">
+
+Si può facilmente notare che la comunicazione in questo caso è andata a buon fine in quanto ogni messaggio che si è provato ad inviare è giunto a destinazione così come le risposte dal dispositivo coinvolto (pong).
+
+```
+4 packet(s) transmitted, 4 packet(s) received, 0% packet loss
+```
+=> 4 pacchetti trasmessi, 4 pacchetti ricevuti, non è stato perso alcun pacchetto nel
+tentativo di comunicare con il dispositivo.
+
+Durante il ping si possono vedere i cavi illuminarsi di verde.
+
+5) *Approfondimento sul comportamento dello switch rispetto al ping:*
+Quando si esegue un ping di un indirizzo ip dal prompt dei comandi, è possibile
+notare come i cavi si illuminino in questo ordine:
+1) host => switch
+2) switch => tutti i dispositivi connessi
+3) dispositivo contenente l’ip specificato nel ping => switch
+Questo avviene in quanto lo switch non conosce il MAC address del dispositivo a cui
+è dedicato l’indirizzo IP a cui ci si rivolge, quindi invierà prima un messaggio in
+broadcast a scopo di popolare la propria MAC table, per poi reindirizzare il pacchetto
+del ping in maniera diretta al dispositivo desiderato.
+Lo switch opera tramite i MAC address, per questo non dovrebbe essere in grado
+trasmettere messaggi in modalità broadcast (come gli hub), ma ciò è necessario
+affinché prima si popoli la MAC table per poi reindirizzare il messaggio iniziale al
+corretto destinatario.
+Riassumendo, lo switch trasmette in broadcast un messaggio con il quale richiede ai
+dispositivi connessi di comparare l’indirizzo IP specificato nel ping con il proprio, la
+risposta arriverà solo dal dispositivo per il quale questa condizione è soddisfatta
+(questa risposta contiene il MAC address del dispositivo coinvolto, che arriverà allo
+switch e verrà collocato nella MAC table).
+La MAC table definisce la porta corrispondente ad un dato indirizzo MAC, ciò che
+invece unisce l’indirizzo IP al relativo MAC address è il protocollo ARP (Address
+Resolution Protocol).
+
+**Conclusione:** tramite questa prova abbiamo potuto osservare il funzionamento del
+protocollo ARP utilizzando il comando ping e abbiamo intrapreso una prima
+esperienza nella gestione di reti connesse tra loro (perciò anche la suddivisione e
+configurazione dei vari dispositivi e l’assegnazione di indirizzi IP, sia manualmente
+sia utilizzando DHCP Server).
