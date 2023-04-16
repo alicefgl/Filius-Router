@@ -116,7 +116,7 @@ successivamente).
 
 Per installare il prompt dei comandi da un qualsiasi Computer o Notebook sulla rete, aprire Software Installation e spostare “Command Line” tra le applicazioni installate (“Installed”), per poi applicare i cambiamenti tramite il tasto in basso al centro (“Apply changes”).
 
-<img src="images\prompt.png" width="350" title="prompt">
+<img src="images\installazione prompt.png" width="350" title="installazione prompt">
 
 4) *Ping a un dispositivo della rete opposta:*
 
