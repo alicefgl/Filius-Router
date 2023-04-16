@@ -35,13 +35,19 @@ Ogni rete deve disporre di un server con servizio DHCP ed uno con servizio DNS.
 L’intera prova è stata eseguita utilizzando Filius.
 
 **Dispositivi coinvolti:**
+
 ● 2 Notebook (PC1 e PC2)
+
 ● 2 Computer con funzione di server DHCP (Server DHCP e Server DHCP 2)
+
 ● 2 Computer con funzione di server DNS
+
 ● Router
+
 ● Cavi
 
 **Riferimenti teorici:**
+
 ● *Ping*: è un comando eseguibile dal prompt dei comandi, viene utilizzato per
 effettuare controllo sulla diagnostica di una rete in quanto è possibile
 contattare un dispositivo tramite il proprio indirizzo ip ed ottenere una risposta
@@ -56,39 +62,16 @@ visualizzare a schermo la latenza del ping stesso, cioè il tempo durante il
 quale il pacchetto naviga sulla rete prima che ritorni una risposta accettabile.
 La latenza viene misurata in millisecondi.
 Questo comando utilizza il protocollo ARP come spiegato successivamente.
-● Protocollo ARP (Address Resolution Protocol): opera al livello di accesso alla
-rete, è necessario per definire le relazioni tra indirizzi IP e MAC.
-Questo servizio può essere utilizzato, ad esempio, quando si vuole
-comunicare ad un dispositivo di una sottorete diversa da quella in cui ci si
-trova per conoscere l’indirizzo IP del gateway.
-In questa prova è stato utilizzato questo protocollo per far popolare la MAC
-table allo switch di una rete, in quanto è stato fornito solamente l’indirizzo IP
-tramite un ping (che utilizza infatti questo protocollo).
-Il primo ARP che viene trasmesso sulla rete è inviato tramite broadcast
-(quindi il MAC address sarà uguale a FF:FF:FF:FF:FF:FF), il destinatario che
-riconosce di avere indirizzo IP uguale a quello contenuto nell’ARP lo completa
-con il proprio MAC address per poi reinviarlo al mittente. Se il messaggio
-iniziale deve uscire da una LAN (come nel caso della prova), inizialmente
-esso dovrà arrivare al router per poi essere indirizzato dal gateway (del quale
-MAC address sarà riconosciuto da un’ARP locale). Tendenzialmente il router
-indirizzerà il messaggio tramite il percorso migliore rilevato dalla routing table.
-● *DHCP*: è un servizio che si utilizza per assegnare indirizzi IP a dei dispositivi
-in modo automatico. E’ possibile impostare su di esso il range di indirizzi IP
-che possono essere forniti, specificando un valore minimo e uno massimo.
-Si può impostare inoltre l’indirizzo IP del gateway (che nel caso della prova
-coincideva con il router) ed il DNS Server della rete. Su filius dopo aver
-configurato il DHCP Server è necessario abilitare il servizio su ogni dispositivo
-che ne necessita.
-● *DNS*: è un servizio che ha lo scopo di assegnare dei nomi a degli indirizzi IP,
-è utilizzato ad esempio per pagine web in quanto sarebbe scomodo e
-soprattutto inefficiente dover scrivere ogni volta l’intero indirizzo IP relativo
-alla pagina che si vuole visitare: come soluzione si sceglie abitualmente
-questo servizio.
+
+● Protocollo ARP (Address Resolution Protocol): opera al livello di accesso alla rete, è necessario per definire le relazioni tra indirizzi IP e MAC. Questo servizio può essere utilizzato, ad esempio, quando si vuole comunicare ad un dispositivo di una sottorete diversa da quella in cui ci si trova per conoscere l’indirizzo IP del gateway. In questa prova è stato utilizzato questo protocollo per far popolare la MAC table allo switch di una rete, in quanto è stato fornito solamente l’indirizzo IP tramite un ping (che utilizza infatti questo protocollo). Il primo ARP che viene trasmesso sulla rete è inviato tramite broadcast (quindi il MAC address sarà uguale a FF:FF:FF:FF:FF:FF), il destinatario che riconosce di avere indirizzo IP uguale a quello contenuto nell’ARP lo completa con il proprio MAC address per poi reinviarlo al mittente. Se il messaggio iniziale deve uscire da una LAN (come nel caso della prova), inizialmente esso dovrà arrivare al router per poi essere indirizzato dal gateway (del quale MAC address sarà riconosciuto da un’ARP locale). Tendenzialmente il router indirizzerà il messaggio tramite il percorso migliore rilevato dalla routing table.
+
+● *DHCP*: è un servizio che si utilizza per assegnare indirizzi IP a dei dispositivi in modo automatico. E’ possibile impostare su di esso il range di indirizzi IP che possono essere forniti, specificando un valore minimo e uno massimo. Si può impostare inoltre l’indirizzo IP del gateway (che nel caso della prova coincideva con il router) ed il DNS Server della rete. Su filius dopo aver configurato il DHCP Server è necessario abilitare il servizio su ogni dispositivo che ne necessita.
+
+● *DNS*: è un servizio che ha lo scopo di assegnare dei nomi a degli indirizzi IP, è utilizzato ad esempio per pagine web in quanto sarebbe scomodo e soprattutto inefficiente dover scrivere ogni volta l’intero indirizzo IP relativo alla pagina che si vuole visitare: come soluzione si sceglie abitualmente questo servizio.
 
 **Svolgimento:**
 1) *Impostazione DHCP server setup:*
-Selezionando il Computer scelto come Server DHCP è possibile configurare
-quest’ultimo tramite il tasto sotto riportato, che compare all’interno della
+Selezionando il Computer scelto come Server DHCP è possibile configurare quest’ultimo tramite il tasto sotto riportato, che compare all’interno della
 finestra in basso alla schermata.
 
 <img src="images\tastoDHCP.png" width="350" title="tastoDHCP">
@@ -104,13 +87,8 @@ Sistema risultante:
 
 <img src="images\rete.png" width="350" title="rete">
 
-Dopo aver impostato correttamente gli indirizzi IP relativi ai vari dispositivi (ad
-esempio come in figura), è possibile avviare la simulazione.
-Se i collegamenti sono stati effettuati in modo corretto e sono stati impostati indirizzi
-IP validi, a simulazione appena avviata si possono vedere i cavi colorarsi di verde (a
-causa dei vari messaggi di controllo inviati prima della comunicazione effettiva, ad
-esempio lo switch popolerà la MAC table sfruttando il protocollo ARP, come spiegato
-successivamente).
+Dopo aver impostato correttamente gli indirizzi IP relativi ai vari dispositivi (ad esempio come in figura), è possibile avviare la simulazione.
+Se i collegamenti sono stati effettuati in modo corretto e sono stati impostati indirizzi IP validi, a simulazione appena avviata si possono vedere i cavi colorarsi di verde (a causa dei vari messaggi di controllo inviati prima della comunicazione effettiva, ad esempio lo switch popolerà la MAC table sfruttando il protocollo ARP, come spiegato successivamente).
 
 3) Prompt dei comandi:
 
@@ -133,30 +111,16 @@ tentativo di comunicare con il dispositivo.
 Durante il ping si possono vedere i cavi illuminarsi di verde.
 
 5) *Approfondimento sul comportamento dello switch rispetto al ping:*
-Quando si esegue un ping di un indirizzo ip dal prompt dei comandi, è possibile
-notare come i cavi si illuminino in questo ordine:
-1) host => switch
-2) switch => tutti i dispositivi connessi
-3) dispositivo contenente l’ip specificato nel ping => switch
-Questo avviene in quanto lo switch non conosce il MAC address del dispositivo a cui
-è dedicato l’indirizzo IP a cui ci si rivolge, quindi invierà prima un messaggio in
-broadcast a scopo di popolare la propria MAC table, per poi reindirizzare il pacchetto
-del ping in maniera diretta al dispositivo desiderato.
-Lo switch opera tramite i MAC address, per questo non dovrebbe essere in grado
-trasmettere messaggi in modalità broadcast (come gli hub), ma ciò è necessario
-affinché prima si popoli la MAC table per poi reindirizzare il messaggio iniziale al
-corretto destinatario.
-Riassumendo, lo switch trasmette in broadcast un messaggio con il quale richiede ai
-dispositivi connessi di comparare l’indirizzo IP specificato nel ping con il proprio, la
-risposta arriverà solo dal dispositivo per il quale questa condizione è soddisfatta
-(questa risposta contiene il MAC address del dispositivo coinvolto, che arriverà allo
-switch e verrà collocato nella MAC table).
-La MAC table definisce la porta corrispondente ad un dato indirizzo MAC, ciò che
-invece unisce l’indirizzo IP al relativo MAC address è il protocollo ARP (Address
-Resolution Protocol).
+Quando si esegue un ping di un indirizzo ip dal prompt dei comandi, è possibile notare come i cavi si illuminino in questo ordine:
 
-**Conclusione:** tramite questa prova abbiamo potuto osservare il funzionamento del
-protocollo ARP utilizzando il comando ping e abbiamo intrapreso una prima
-esperienza nella gestione di reti connesse tra loro (perciò anche la suddivisione e
-configurazione dei vari dispositivi e l’assegnazione di indirizzi IP, sia manualmente
-sia utilizzando DHCP Server).
+1) host => switch
+
+2) switch => tutti i dispositivi connessi
+
+3) dispositivo contenente l’ip specificato nel ping => switch
+
+Questo avviene in quanto lo switch non conosce il MAC address del dispositivo a cui è dedicato l’indirizzo IP a cui ci si rivolge, quindi invierà prima un messaggio in
+broadcast a scopo di popolare la propria MAC table, per poi reindirizzare il pacchetto del ping in maniera diretta al dispositivo desiderato. Lo switch opera tramite i MAC address, per questo non dovrebbe essere in grado trasmettere messaggi in modalità broadcast (come gli hub), ma ciò è necessario affinché prima si popoli la MAC table per poi reindirizzare il messaggio iniziale al corretto destinatario.
+Riassumendo, lo switch trasmette in broadcast un messaggio con il quale richiede ai dispositivi connessi di comparare l’indirizzo IP specificato nel ping con il proprio, la risposta arriverà solo dal dispositivo per il quale questa condizione è soddisfatta (questa risposta contiene il MAC address del dispositivo coinvolto, che arriverà allo switch e verrà collocato nella MAC table). La MAC table definisce la porta corrispondente ad un dato indirizzo MAC, ciò che invece unisce l’indirizzo IP al relativo MAC address è il protocollo ARP (Address Resolution Protocol).
+
+**Conclusione:** tramite questa prova abbiamo potuto osservare il funzionamento del protocollo ARP utilizzando il comando ping e abbiamo intrapreso una prima esperienza nella gestione di reti connesse tra loro (perciò anche la suddivisione e configurazione dei vari dispositivi e l’assegnazione di indirizzi IP, sia manualmente sia utilizzando DHCP Server).
